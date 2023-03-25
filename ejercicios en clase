@@ -1,0 +1,163 @@
+void adivindar ()
+{
+    const int oportunidad = 4;
+    int NumeroCPU, NumeroUsuario;
+    byte Intentos, BanderaControl;
+    string linea;
+    //generar numeros de 1 al 20 unicamente.
+    Random ran = new Random();
+    Random rnd = new Random();
+    int[] numeros = new int[5];
+
+    for (int i = 0; i < numeros.Length; i++)
+    {
+        numeros[i] = rnd.Next(1, 11); // generamos un número aleatorio entre 1 y 10
+        Console.Write(numeros[i] + " "); // mostramos el número generado
+    }
+
+    //Proceso
+    Intentos = 1;
+    BanderaControl = 0;
+
+    do
+    {
+        Console.WriteLine("Estoy pensando en un numero, cual sera?");
+        linea = Console.ReadLine();
+        NumeroUsuario = Convert.ToInt32(linea);
+        if(NumeroCPU == NumeroUsuario)
+        {
+            Console.WriteLine("Adivinaste!!!");
+            BanderaControl = 1;
+        }else
+            if((NumeroUsuario>NumeroUsuario))
+        {
+            Console.WriteLine("Es antes");
+        }else
+        {
+            Console.WriteLine("Te pasaste");
+        }
+        Intentos++;
+    } while (((Intentos <= oportunidad) & (BanderaControl <= 20)));
+    if(BanderaControl == 0)
+    {
+        Console.WriteLine("El numero fue:"+NumeroCPU);
+    }
+}
+
+void mayor_menor()
+{
+    int mayor = 0;
+    int menor =10;
+    int numero = 0;
+    Random random = new Random();
+     
+    for(int i = 0; i < 5; i++)
+    {
+        numero= random.Next(10);
+        Console.WriteLine(numero);
+        if (numero > mayor)
+        {
+            mayor = numero;
+        }
+        if(numero < menor)
+        {
+          menor = numero;
+        }
+        
+     }
+    Console.WriteLine("El mayor es="+mayor);
+    Console.WriteLine("El menor es="+menor);
+}
+
+
+
+void catcher()
+{
+    int cantidad = 0;
+    Console.WriteLine("Ingrese una cantidad");
+    try
+    {
+        cantidad= int.Parse(Console.ReadLine());
+        cantidad = cantidad / 0;
+        
+    }catch(FormatException fex)
+    {
+        Console.WriteLine("Ingreso mal el numero"+fex.Message);
+  }catch(Exception ex)
+    {
+        Console.WriteLine("hay un error de otro tipo"+ex.Message);  
+    }
+
+    if(cantidad >0)
+    {
+        Console.WriteLine("cantidad ingresada"+ cantidad);
+    }
+    
+
+}
+
+void ejemploArreglos()
+{
+    int[] numero = new int[5]; //definimos y creamos un arreglo
+    int suma = 0;
+    numero[0] = 45;
+    numero[1] = 50;
+    numero[2] = 68;
+    numero[3] = 70;
+    numero[4] = 86;
+    numero[5] = 92;
+    numero[6] = 69;
+    int elementos = 3;
+
+    string[] nombres = new string[10];
+    nombres[0] = "Maria";
+    nombres[1] = "Juan";
+    nombres[2] = "Pedro";
+    nombres[3] = "Fernando";
+    nombres[4] = "Bryan";
+    nombres[5] = "Jesus";
+    nombres[6] = "Virginia";
+    nombres[7] = "Silvia";
+    nombres[8] = "Josue";
+    nombres[9] = "Antoni";
+     int[] numeros = new int[10];
+    Random rnd = new Random();
+
+
+    for (int i = 0; i < nombres.Length; i++)
+    {
+        Console.Write("Ingrese el nombre " + (i + 1) + ": ");
+        nombres[i] = Console.ReadLine();
+        numeros[i] = i;
+    }
+
+
+    Console.WriteLine("¡Rifa! ¡Rifa!");
+    int ganador1 = rnd.Next(0, nombres.Length);
+    int ganador2 = rnd.Next(0, nombres.Length - 1);
+    if (ganador2 >= ganador1)
+    {
+        ganador2++;
+    }
+    Console.WriteLine("Los ganadores son: " + nombres[ganador1] + " y " + nombres[ganador2]);
+
+    Console.ReadKey();
+
+
+    for (int i=0;i<elementos;i++)
+    {
+        
+        Console.WriteLine(nombres[i]);
+        suma=suma+numero[i];
+        Console.WriteLine(numero[i]);
+    }
+
+    Console.WriteLine("Sumatoria=" + suma);
+    Console.WriteLine("El promedio=" + suma / 5);
+    
+}
+
+adivindar();
+mayor_menor();
+catcher();
+ejemploArreglos();
